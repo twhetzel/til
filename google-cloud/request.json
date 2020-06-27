@@ -1,0 +1,23 @@
+{
+  "requests":[
+    {
+      "inputConfig": {
+        "gcsSource": {
+          "uri": "gs://gwas-pdf/pmid_31196165.pdf"
+        },
+        "mimeType": "application/pdf"
+      },
+      "features": [
+        {
+          "type": "DOCUMENT_TEXT_DETECTION"
+        }
+      ],
+      "outputConfig": {
+        "gcsDestination": {
+          "uri": "gs://gwas-results/"
+        },
+        "batchSize": 1
+      }
+    }
+  ]
+}
