@@ -30,5 +30,6 @@ setup(name='distributions',
 You can install your package by going to the directory with the `setup.py` file and then type `pip install .` to install the package. This installs the package whereever pip is configured to install packages on your system. From the Python interpreter you can import the package, e.g. `import distributions` and then type this to see where it was installed, `distributions.__file__`.
 
 
+To update a package, type `pip install --upgrade .`
 
 NOTE: The import syntax is different between Python 2 and Python 3.
