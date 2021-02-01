@@ -1,0 +1,143 @@
+This is an example to add a "Show More/Less" link within a column to expand the amount of data that is displayed.
+
+```
+import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import BootstrapTable from 'react-bootstrap-table-next';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import $ from 'jquery';
+
+class demoTable extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      priceFilter: textFilter({
+        placeholder: 'My Custom PlaceHolder',
+      }),
+      columns: [{
+        dataField: 'ID',
+        text: 'Project ID',
+        headerAlign: 'center',
+        sort: true,
+        filter: textFilter()
+      }, {
+        dataField: 'title',
+        text: 'Title',
+        headerAlign: 'center',
+        sort: true,
+        filter: textFilter()
+      }, {
+        dataField: 'description',
+        text: 'Description',
+        headerAlign: 'center',
+        sort: true,
+        filter: textFilter(),
+        formatter: truncateText
+      }, {
+        dataField: 'id',
+        text: 'ID',
+        hidden: true
+      }],
+      selectRow: {
+        mode: 'radio',
+        clickToSelect: true,
+        bgColor: "#ececec",
+      },
+    }
+  }
+
+  render() {
+
+    return (
+      <div id="project_holder">
+        {this.props.projectProgress ?
+          <div>
+            <CircularProgress
+              size="4em"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%'
+              }} />
+            <div
+              style={{
+                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                width: '100%',
+                height: '100%',
+                opacity: '30%'
+              }}
+            >
+              <BootstrapTable
+                bootstrap4
+                keyField='id'
+                id="project_table"
+                classes="text-break table-responsive"
+                data={this.props.projects}
+                columns={this.state.columns}
+                selectRow={this.props.selectProject}
+                filter={filterFactory()}
+              />
+            </div>
+          </div>
+          :
+          <>
+            <BootstrapTable
+              bootstrap4
+              keyField='id'
+              id="project_table"
+              striped
+              classes="text-break table-responsive"
+              data={this.props.projects}
+              columns={this.state.columns}
+              selectRow={this.props.selectProject}
+              filter={filterFactory()}
+              noDataIndication="No data available"
+            />
+          </>
+        }
+      </div>
+    );
+  }
+}
+
+function truncateText(cell, row) {
+  return row.description && row.description.length > 100 ? formatText(row) : cell;
+
+}
+
+const formatText = (row) => {
+  let moreText = 'Show more >';
+
+  return (
+    <div>
+      <span id={row.id} class="more">{row.description.substring(0, 100)}...   </span>
+      <a href="javascript:void(0)" id={row.id} class="link" onClick={(e) => toggleTextDisplay(row, e)}>{moreText}</a>
+    </div>
+  )
+}
+
+function toggleTextDisplay(row) {
+  if ($(`span#${row.id}`).hasClass('more')) {
+    // Update to show full description
+    $(`#${row.id}`).html(row.description + '&nbsp;')
+    // Change class selectors
+    $(`span#${row.id}`).removeClass('more')
+    $(`span#${row.id}`).addClass('less')
+    // Update display text
+    $(`a#${row.id}.link`).html('Show less');
+  } else {
+    // Update to show truncated description
+    $(`#${row.id}`).html(row.description.substring(0, 100) + '...&nbsp;')
+    // Change class selectors
+    $(`span#${row.id}`).removeClass('less')
+    $(`span#${row.id}`).addClass('more')
+    // Update display text
+    $(`a#${row.id}.link`).html('Show more >');
+  }
+}
+
+export default demoTable;
+```
