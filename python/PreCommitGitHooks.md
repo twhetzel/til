@@ -46,7 +46,8 @@ repos:
  ``` 
  
 - Initialize the Git hooks for the repository:  
- `pre-commit install`
+`pre-commit install`\
+`> pre-commit installed at .git/hooks/pre-commit`
  
 - NOTE: Git commits can still be run without using "pre-commit" as:  
  `git commit --no-verify`
