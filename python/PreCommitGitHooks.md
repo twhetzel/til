@@ -4,10 +4,10 @@
 Pre-commit hooks are a subset of Git hooks. Git hooks in general run automatically each time a Git event occurs. A pre-commit hook runs for a commit event. A pre-commit hook can be configured to run locally, which can save development time by not needing to wait for a CI/CD pipeline to run, find and fix errors, commit updates, and then wait for another round of the CI/CD to complete.
 
 ## Getting Started
-- Install pre-commit: 
+- Install pre-commit:\
 `pip install pre-commit`
 
-- Create a `pre-commit-config.yaml` YAML file to configure which pre-commit hooks to run:
+- Create a "pre-commit-config.yaml" YAML file to configure which pre-commit hooks to run:\
 `touch .pre-commit-config.yaml`
 
 - Create YAML file with hooks
