@@ -60,8 +60,10 @@ repos:
 
  
  # References
+ - https://pre-commit.com/
  - https://towardsdatascience.com/getting-started-with-python-pre-commit-hooks-28be2b2d09d5
  - https://towardsdatascience.com/pre-commit-hooks-you-must-know-ff247f5feb7e
+ - https://github.com/pre-commit/mirrors-prettier
 
 
  
