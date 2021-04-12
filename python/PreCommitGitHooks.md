@@ -52,7 +52,7 @@ repos:
 - After installing pre-commit and setting up the configuration file, run check on all files in repo to get started (usually `pre-commit` will only run on the changed files during git hooks):\
 `pre-commit run --all-files`
 
-- To run individual hooks use:\ 
+- To run individual hooks use:   
 `pre-commit run <hook_id>`
 
 - NOTE: Git commits can still be run without using "pre-commit" as:  
