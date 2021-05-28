@@ -4,7 +4,7 @@
 A lambda function is an anonymous function. It can take any number of arguments, but can only have one expression. It does not have a return statement.
 
 ## Examples
-### Add 10 to variable x and return the result.
+### Add 10 to variable a and return the result.
 ```
 x = lambda a : a + 10
 print(x(5))
